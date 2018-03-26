@@ -132,7 +132,7 @@
       <form id="create-form">
         <div class="form-group">
           <label for="create-item">Item</label>
-          <input type="text" class="form-control" name="todo[item]" id="create-item" placeholder="Item">
+          <input type="text" class="form-control" name="todo[name]" id="create-item" placeholder="Name">
         </div>
         <div class="form-group">
           <label for="create-description">Description</label>
@@ -152,6 +152,15 @@
       <!-- show button -->
       <button type="submit" id="index-all" class="btn btn-default">See All</button>
       <!-- end of show button -->
+
+      <!-- search by name form -->
+      <form id="search-by-name">
+        <div class="form-group">
+          <input type="text" id="search" name="todo[name]" placeholder="Search by name">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </form>
+      <!-- end of search by name form -->
       <div id="content"></div>
     </div>
   </body>

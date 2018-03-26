@@ -44,17 +44,16 @@ const onIndexAll = function (event) {
     .catch(ui.onIndexAllFailure)
 }
 //
-// const onShowbyId = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   // store.data = data
-//   // console.log(data)
-//   api.getList(data)
-//     // .then(() => console.log(data))
-//     .then($('.content').empty())
-//     .then(ui.onGetOneSuccess)
-//     .catch(ui.onGetListFailure)
-// }
+const onShowbyName = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(event)
+  console.log(data)
+
+  api.showOne(data)
+    .then(ui.onShowOneSuccess)
+    .catch(ui.onShowListFailure)
+}
 //
 // const onOneLoad = (event) => {
 //   event.preventDefault()
@@ -85,7 +84,7 @@ const addHandlers = () => {
   $('#create-form').on('submit', onCreateTodo)
   $('#index-all').on('click', onIndexAll)
   // $('#update').on('submit', onUpdate)
-  // $('#find_by_id').on('submit', onShowbyId)
+  $('#search-by-name').on('submit', onShowbyName)
   // $('.cancel').on('click', cancel)
   // $('#content').on('click', '.list-delete', onDeleteList)
   // $('#content').on('click', '.list-update', onOneLoad)
