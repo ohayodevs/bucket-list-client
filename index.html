@@ -130,6 +130,28 @@
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
+
+      <!-- create form -->
+      <form id="create-form">
+  <div class="form-group">
+    <label for="create-item">Item</label>
+    <input type="text" class="form-control" name="todo[item]" id="create-item" placeholder="Item">
+  </div>
+  <div class="form-group">
+    <label for="create-description">Description</label>
+    <input type="text" class="form-control" name="todo[description]" id="create-description" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label for="create-date">Date</label>
+    <input type="date" class="form-control" name="todo[date]" id="create-date" placeholder="Date">
+  </div>
+  <div class="form-group">
+    <label for="create-location">Location</label>
+    <input type="text" class="form-control" name="todo[location]" id="create-location" placeholder="Location">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+      <!-- end of create form -->
 </div>
     </body>
 </html>

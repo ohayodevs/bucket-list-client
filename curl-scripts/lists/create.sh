@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/lists"
+URL_PATH="/todos"
 
 curl "${API}${URL_PATH}" \
   --include \
@@ -9,8 +9,8 @@ curl "${API}${URL_PATH}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "list": {
-      "item": "'"${ITEM}"'",
+    "todo": {
+      "name": "'"${ITEM}"'",
       "description": "'"${DESCRIPTION}"'",
       "date": "'"${DATE}"'",
       "location": "'"${LOCATION}"'"
