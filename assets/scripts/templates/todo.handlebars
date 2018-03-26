@@ -1,0 +1,61 @@
+<ul class="list-unstyled todos-list">
+  {{#each todos as |todo|}}
+  <li data-id="{{todo.id}}">
+    <div class="row" data-id="{{todo.id}}">
+      <div class="col-xs-12 todo-header">
+        <h3 class="todo-name">{{todo.name}}</h3>
+        <h4 class="todo-date">{{todo.date}}</h4>
+      </div>
+      <div class="col-xs-12">
+        <div class="todo-description">
+          {{todo.description}}
+        </div>
+        <div class="col-xs-12">
+          <div class="todo-location">
+            {{todo.location}}
+          </div>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+
+<div class="modal fade" id="thisupdatemyModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Update a List</h4>
+      </div>
+      <div class="modal-body">
+        <!-- content within a model of create list -->
+        <form id="updateHtml">
+          <div class="form-group">
+            <label for="list_id">List ID</label>
+            <input type="number" class="form-control oneId" id="" name="list[id]" placeholder="ID" disabled>
+          </div>
+          <div class="form-group">
+            <label for="expiration date">Expiration Date</label>
+            <input type="date" class="form-control oneDate" id="expiration" name=todo[date] placeholder="YYYY-MM-DD" required>
+          </div>
+          <div class="form-group">
+            <label for="item">Item</label>
+            <input type="text" class="form-control oneItem" id="item_name" name="todo[item_name]" placeholder="Item Name" required>
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" class="form-control oneCategory" id="category_name" name="todo[category]" placeholder="Category" required>
+            <!-- content within a model of create list end -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="toupdate" class="btn btn-default">Update list</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </form>
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+  </div>
+</div>

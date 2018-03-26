@@ -11,7 +11,6 @@ const onCreateTodo = function (event) {
   // console.log(event.target)
   const data = getFormFields(event.target)
   store.data = data
-  // console.log(data.expiration_dates)
 
   api.createTodo(data)
     // .then(() => api.showAll(event))
@@ -39,12 +38,11 @@ const onCreateTodo = function (event) {
 //     .catch(ui.onUpdateFailure)
 // }
 //
-// const onShowAll = function (event) {
-//   api.showAll(event)
-//     .then($('.content').empty())
-//     .then(ui.onShowAllSuccess)
-//     .catch(ui.onShowAllFailure)
-// }
+const onIndexAll = function (event) {
+  api.indexAll(event)
+    .then(ui.onIndexAllSuccess)
+    .catch(ui.onIndexAllFailure)
+}
 //
 // const onShowbyId = function (event) {
 //   event.preventDefault()
@@ -85,7 +83,7 @@ const onCreateTodo = function (event) {
 
 const addHandlers = () => {
   $('#create-form').on('submit', onCreateTodo)
-  // $('#showAll').on('click', onShowAll)
+  $('#index-all').on('click', onIndexAll)
   // $('#update').on('submit', onUpdate)
   // $('#find_by_id').on('submit', onShowbyId)
   // $('.cancel').on('click', cancel)

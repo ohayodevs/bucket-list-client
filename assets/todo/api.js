@@ -55,16 +55,17 @@ const createTodo = function (data) {
 // }
 // // data.list.id,
 //
-// const showAll = function () {
-//   return $.ajax({
-//     url: config.apiOrigin + '/expiration_dates/',
-//     method: 'GET',
-//     headers: {
-//       contentType: 'application/json',
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const indexAll = function () {
+  console.log('api')
+  return $.ajax({
+    url: config.apiUrl + '/todos',
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 //
 // const getList = function (data) {
 //   // console.log(data.expiration_date.id)
@@ -105,10 +106,10 @@ const createTodo = function (data) {
 // }
 
 module.exports = {
-  createTodo
+  createTodo,
   // load,
   // updateList,
-  // showAll,
+  indexAll
   // getList,
   // deleteList
 }
