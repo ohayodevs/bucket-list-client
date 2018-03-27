@@ -44,7 +44,6 @@ const createTodo = function (data) {
 // // data.list.id,
 //
 const indexAll = function () {
-  console.log('api')
   return $.ajax({
     url: config.apiUrl + '/todos',
     method: 'GET',
@@ -55,10 +54,9 @@ const indexAll = function () {
   })
 }
 //
-const showOne = function (data) {
-  console.log('Data is', data)
+const showOne = function (id) {
   return $.ajax({
-    url: config.apiUrl + '/todos/' + data,
+    url: config.apiUrl + '/todos/' + id,
     method: 'GET',
     headers: {
       contentType: 'application/json',

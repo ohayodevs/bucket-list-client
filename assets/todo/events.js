@@ -46,9 +46,8 @@ const onShowAll = function (event) {
 //
 const onShowOne = function (event) {
   event.preventDefault()
-  const data = $('.panel-title').attr('data-id')
-  console.log(data)
-  api.showOne(data)
+  const id = $('.panel-title').attr('data-id')
+  api.showOne(id)
     .then(ui.onShowOneSuccess)
     .catch(ui.onShowOneFailure)
 }
