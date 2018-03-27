@@ -1,7 +1,7 @@
 {{#each todos as |todo|}}
 {{#if todo.editable}}
 <br>
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="see-more-button">
     <div class="panel-heading">
       <h3 class="panel-title" data-id={{todo.id}}>{{todo.name}}</h3>
     </div>

@@ -17,19 +17,7 @@ const createTodo = function (data) {
     data
   })
 }
-//
-// // const getOne = function (data) {
-// // console.log('api')
-// //   return $.ajax({
-// //     url: config.apiOrigin + '/expiration_dates' + store.id,
-// //     method: 'POST',
-// //     headers: {
-// //       contentType: 'application/json',
-// //       Authorization: 'Token token=' + store.user.token
-// //     },
-// //     data
-// //   })
-// // }
+
 //
 // const updateList = function (data) {
 //   // console.log(data)
@@ -68,9 +56,9 @@ const indexAll = function () {
 }
 //
 const showOne = function (data) {
-  console.log(data)
+  console.log('Data is', data)
   return $.ajax({
-    url: config.apiUrl + '/todos/' + data.todo.name,
+    url: config.apiUrl + '/todos/' + data,
     method: 'GET',
     headers: {
       contentType: 'application/json',

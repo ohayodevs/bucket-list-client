@@ -38,32 +38,21 @@ const onCreateTodo = function (event) {
 //     .catch(ui.onUpdateFailure)
 // }
 //
-const onIndexAll = function (event) {
+const onShowAll = function (event) {
   api.indexAll(event)
-    .then(ui.onIndexAllSuccess)
-    .catch(ui.onIndexAllFailure)
+    .then(ui.onShowAllSuccess)
+    .catch(ui.onShowAllFailure)
 }
 //
-const onShowbyName = function (event) {
+const onShowOne = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log(event)
+  const data = $('.panel-title').attr('data-id')
   console.log(data)
-
   api.showOne(data)
     .then(ui.onShowOneSuccess)
-    .catch(ui.onShowListFailure)
+    .catch(ui.onShowOneFailure)
 }
-//
-// const onOneLoad = (event) => {
-//   event.preventDefault()
-//
-//   // grab the `data-id` attribute
-//   const id = event.target.dataset.id
-//   api.load(id)
-//     .then(ui.getOne)
-// }
-//
+
 // const onDeleteList = (event) => {
 //   event.preventDefault()
 //   // grab the `data-id` attribute
@@ -82,9 +71,9 @@ const onShowbyName = function (event) {
 
 const addHandlers = () => {
   $('#create-form').on('submit', onCreateTodo)
-  $('#index-all').on('click', onIndexAll)
+  $('#index-all').on('click', onShowAll)
   // $('#update').on('submit', onUpdate)
-  $('#search-by-name').on('submit', onShowbyName)
+  $('#content').on('click', '#see-more-button', onShowOne)
   // $('.cancel').on('click', cancel)
   // $('#content').on('click', '.list-delete', onDeleteList)
   // $('#content').on('click', '.list-update', onOneLoad)

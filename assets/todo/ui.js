@@ -1,8 +1,9 @@
 'use strict'
+
 const store = require('../scripts/store')
 // const listEvents = require('./events')
-const showlistsTemplate = require('../scripts/templates/todos.handlebars')
-// const showlistTemplate = require('../templates/partial.handlebars')
+const showTodosTemplate = require('../scripts/templates/todos.handlebars')
+const showTodoTemplate = require('../scripts/templates/todo.handlebars')
 
 const onCreateSuccess = function (data) {
   store.data = data
@@ -15,24 +16,20 @@ const onCreateSuccess = function (data) {
   // $('#messageTwo').dequeue()
 }
 
-const onIndexAllSuccess = function (data) {
+const onShowAllSuccess = function (data) {
   store.data = data
-  const showlistsHtml = showlistsTemplate({ todos: data.todos })
-  $('#content').append(showlistsHtml)
-  $('input').val('')
+  const showTodosHtml = showTodosTemplate({ todos: data.todos })
+  $('#content').append(showTodosHtml)
 }
 
 const onShowOneSuccess = function (data) {
-  store.todo = data.todo
-
-  $('input').val('')
-  const showlistHtml = showlistTemplate({ todo: data.todo })
-  $('#content').append(showlistHtml)
+  const showTodoHtml = showTodoTemplate({ todo: data.todo })
+  $('#content').append(showTodoHtml)
 }
 
-const onShowListFailure = function () {
-  $('input').val('')
-}
+// const onShowOneFailure = function () {
+//   $('input').val('')
+// }
 
 // const getOne = (data) => {
 //   store.data = data
@@ -93,10 +90,10 @@ const onShowListFailure = function () {
 module.exports = {
   onCreateSuccess,
   onShowOneSuccess,
-  onShowListFailure,
+  // onShowTodoFailure,
   // onUpdateSuccess,
   // onUpdateFailure,
-  onIndexAllSuccess
+  onShowAllSuccess
   // removeList,
   // onGetListFailure,
   // getOne
