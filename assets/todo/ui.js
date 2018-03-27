@@ -42,9 +42,7 @@ const onShowOneFailure = function () {
 // }
 //
 const onUpdateSuccess = function (data) {
-  store.todo = data.todo
-  const showTodosHtml = showTodosTemplate({ todos: data.todos })
-  $('#content').append(showTodosHtml)
+  $('form').trigger('reset')
 }
 
 const onUpdateFailure = function () {
