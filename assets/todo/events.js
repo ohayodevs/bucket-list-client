@@ -7,39 +7,16 @@ const store = require('../scripts/store')
 
 const onCreateTodo = function (event) {
   event.preventDefault()
-  // console.log(event)
-  // console.log(event.target)
   const data = getFormFields(event.target)
   store.data = data
 
   api.createTodo(data)
-    // .then(() => api.showAll(event))
-    // .then($('.content').empty())
     .then(ui.onCreateSuccess)
-    // .catch(ui.onCreatefailure)
+    .catch(ui.onCreatefailure) // TODO
 }
 
-// const onUpdate = function (event) {
-//   const data = getFormFields(this)
-//   // console.log(data)
-//   event.preventDefault()
-//   store.data = data
-//
-//   // const data = {
-//   //   date: store.date,
-//   //   item_name: store.item_name,
-//   //   category: store.category
-//   // }
-//
-//   api.updateList(data)
-//     .then(() => api.showAll(event))
-//     .then($('.content').empty())
-//     .then(ui.onUpdateSuccess)
-//     .catch(ui.onUpdateFailure)
-// }
-//
 const onShowAll = function (event) {
-  api.indexAll(event)
+  api.showAll(event)
     .then(ui.onShowAllSuccess)
     .catch(ui.onShowAllFailure)
 }
@@ -50,6 +27,26 @@ const onShowOne = function (event) {
   api.showOne(id)
     .then(ui.onShowOneSuccess)
     .catch(ui.onShowOneFailure)
+}
+
+const onUpdate = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log('update form ', data)
+  api.update(data)
+    // .then(() => {
+    //   $('#content').empty()
+    // })
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateFailure)
+}
+
+const onLoadForm = (event) => {
+  event.preventDefault()
+  console.log(store)
+  const id = $('.panel-title').attr('data-id')
+  $('#update-form-id').val(id)
+  $('#update-form').removeClass('hidden')
 }
 
 // const onDeleteList = (event) => {
@@ -70,14 +67,11 @@ const onShowOne = function (event) {
 
 const addHandlers = () => {
   $('#create-form').on('submit', onCreateTodo)
-  $('#index-all').on('click', onShowAll)
-  // $('#update').on('submit', onUpdate)
+  $('#show-all').on('click', onShowAll)
   $('#content').on('click', '#see-more-button', onShowOne)
-  // $('.cancel').on('click', cancel)
+  $('#content').on('click', '.todo-update', onLoadForm)
+  $('#update-form').on('submit', onUpdate)
   // $('#content').on('click', '.list-delete', onDeleteList)
-  // $('#content').on('click', '.list-update', onOneLoad)
-  // $('#content').on('submit', '#updateHtml', onUpdate)
-  // $('.close').on('click', cancel)
 }
 
 module.exports = {
