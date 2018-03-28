@@ -51,22 +51,22 @@ const showOne = function (id) {
   })
 }
 //
-// const deleteList = function (id) {
-//   // console.log(id)
-//   return $.ajax({
-//     url: config.apiOrigin + '/expiration_dates/' + id,
-//     method: 'DELETE',
-//     headers: {
-//       contentType: 'application/json',
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const deleteTodo = function (id) {
+
+  return $.ajax({
+    url: config.apiUrl + '/todos/' + id,
+    method: 'DELETE',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   createTodo,
   update,
   showAll,
-  showOne
-  // deleteList
+  showOne,
+  deleteTodo
 }

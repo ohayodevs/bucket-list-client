@@ -23,7 +23,8 @@ const onShowAll = function (event) {
 //
 const onShowOne = function (event) {
   event.preventDefault()
-  const id = $('.panel-title').attr('data-id')
+  // const id = $('.panel-title').attr('data-id')
+  const id = event.target.dataset.id
   api.showOne(id)
     .then(ui.onShowOneSuccess)
     .catch(ui.onShowOneFailure)
@@ -49,21 +50,25 @@ const onLoadForm = (event) => {
   $('#update-form').removeClass('hidden')
 }
 
-// const onDeleteList = (event) => {
-//   event.preventDefault()
-//   // grab the `data-id` attribute
-//   const id = event.target.dataset.id
-//
-//   api.deleteList(id)
-//     .then(() => api.showAll(event))
-//     .then($('.content').empty())
-//     .then(ui.removeList) // after deleting a list, refetch all lists
-//     .catch(ui.failure)
-// }
-//
-// const cancel = function () {
-//   $('input').val('')
-// }
+const onClear = (event) => {
+  event.preventDefault()
+  $('#content').empty()
+}
+
+const onDeleteList = (event) => {
+  event.preventDefault()
+  // grab the `data-id` attribute
+  const id = event.target.dataset.id
+  console.log(id)
+  api.deleteTodo(id)
+    .then($('#content').empty())
+    .then(onShowAll)
+    .catch(ui.failure)
+}
+
+const cancel = function () {
+  $('input').val('')
+}
 
 const addHandlers = () => {
   $('#create-form').on('submit', onCreateTodo)
@@ -71,7 +76,8 @@ const addHandlers = () => {
   $('#content').on('click', '#see-more-button', onShowOne)
   $('#content').on('click', '.todo-update', onLoadForm)
   $('#update-form').on('submit', onUpdate)
-  // $('#content').on('click', '.list-delete', onDeleteList)
+  $('#clear-button').on('click', onClear)
+  $('#content').on('click', '.todo-delete', onDeleteList)
 }
 
 module.exports = {
