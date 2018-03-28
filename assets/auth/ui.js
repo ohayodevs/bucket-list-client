@@ -31,9 +31,20 @@ const signInFailure = function () {
   $('form').trigger('reset')
 }
 
+const signOutSuccess = () => {
+  $('#first-page').removeClass('hidden')
+  $('#second-page, .todo-header').addClass('hidden')
+  store.user = null
+}
+
+const signOutFailure = () => {
+  console.error()
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure
+  signInFailure,
+  signOutSuccess,
+  signOutFailure
 }

@@ -50,26 +50,19 @@ const onChangePassword = function (event) {
 }
 
 const onSignOut = function (event) {
+  console.log('clicked')
   event.preventDefault()
   api.signOut()
-    .then(ui.clearEntries)
+    .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//
-//   api.signOut()
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
-//
+
 const addHandlers = () => {
   showPageOne()
-  $('#first-page-forms').on('click','#show-sign-up', showSignUp)
-  $('#first-page-forms').on('click','#show-sign-in', showSignIn)
-  $('#first-page-forms').on('submit','#sign-up-form', onSignUp)
-  $('#first-page-forms').on('submit','#sign-in-form', onSignIn)
+  $('#first-page-forms').on('click', '#show-sign-up', showSignUp)
+  $('#first-page-forms').on('click', '#show-sign-in', showSignIn)
+  $('#first-page-forms').on('submit', '#sign-up-form', onSignUp)
+  $('#first-page-forms').on('submit', '#sign-in-form', onSignIn)
   $('#change-password-form').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
 }
