@@ -54,7 +54,6 @@ const onUpdateSuccess = function (data) {
   $('#create-form-feedback').removeClass('text-danger')
   $('#create-form-feedback').addClass('text-success')
   $('#create-form-feedback').append('Bucket-list udpated successfully!')
-  $('form').trigger('reset')
 }
 
 const onUpdateFailure = function () {
@@ -62,6 +61,11 @@ const onUpdateFailure = function () {
   $('#create-form-feedback').removeClass('text-success')
   $('#create-form-feedback').append('Udpate was unsuccessful! Try again!')
   // $('form').trigger('reset')
+}
+
+const onDeleteSuccess = () => {
+  $('#todo-content').empty()
+  $('#delete-feedback').text('Deleted successfully!')
 }
 
 module.exports = {
@@ -73,5 +77,6 @@ module.exports = {
   onShowUpdateForm,
   onUpdateSuccess,
   onUpdateFailure,
-  onShowAllSuccess
+  onShowAllSuccess,
+  onDeleteSuccess
 }

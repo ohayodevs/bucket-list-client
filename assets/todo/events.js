@@ -46,8 +46,8 @@ const onUpdate = (event) => {
 const onShowUpdate = (event) => {
   event.preventDefault()
   const id = $('.panel-title').attr('data-id')
+  console.log(id)
   $('#update-form-id').val(id)
-  $('#update-form').removeClass('hidden')
   ui.onShowUpdateForm()
 }
 
@@ -58,14 +58,13 @@ const onClear = (event) => {
   $('#todo-content').empty()
 }
 
-const onDeleteList = (event) => {
+const onDeleteTodo = (event) => {
   event.preventDefault()
   // grab the `data-id` attribute
   const id = event.target.dataset.id
-  console.log(id)
   api.deleteTodo(id)
-    .then($('#content').empty())
     .then(onShowAll)
+    .then(ui.onDeleteSuccess)
     .catch(ui.failure)
 }
 
@@ -76,7 +75,7 @@ const addHandlers = () => {
   $('#todo-content').on('click', '.todo-update', onShowUpdate)
   $('#todo-content').on('submit', '#update-form', onUpdate)
   $('#clear-button').on('click', onClear)
-  $('#content').on('click', '.todo-delete', onDeleteList)
+  $('#todo-content').on('click', '.todo-delete', onDeleteTodo)
   $('#show-create-form').on('click', onShowCreate)
 }
 
