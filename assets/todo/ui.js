@@ -20,7 +20,8 @@ const onShowAllSuccess = function (data) {
 
 const onShowOneSuccess = function (data) {
   const showTodoHtml = showTodoTemplate({ todo: data.todo })
-  $('#content').append(showTodoHtml)
+  $('#todo-content').empty()
+  $('#todo-content').append(showTodoHtml)
 }
 
 const onShowOneFailure = function () {

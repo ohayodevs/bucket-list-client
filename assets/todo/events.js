@@ -12,18 +12,18 @@ const onCreateTodo = function (event) {
 
   api.createTodo(data)
     .then(ui.onCreateSuccess)
-    .catch(ui.onCreatefailure) // TODO
+    .catch(ui.onCreatefailure)
 }
 
 const onShowAll = function (event) {
+  $('#show-all').prop('disabled', true)
   api.showAll(event)
     .then(ui.onShowAllSuccess)
     .catch(ui.onShowAllFailure)
 }
-//
+
 const onShowOne = function (event) {
   event.preventDefault()
-  // const id = $('.panel-title').attr('data-id')
   const id = event.target.dataset.id
   api.showOne(id)
     .then(ui.onShowOneSuccess)
@@ -52,7 +52,9 @@ const onLoadForm = (event) => {
 
 const onClear = (event) => {
   event.preventDefault()
+  $('#show-all').prop('disabled', false)
   $('#content').empty()
+  $('#todo-content').empty()
 }
 
 const onDeleteList = (event) => {
@@ -64,10 +66,6 @@ const onDeleteList = (event) => {
     .then($('#content').empty())
     .then(onShowAll)
     .catch(ui.failure)
-}
-
-const cancel = function () {
-  $('input').val('')
 }
 
 const addHandlers = () => {
