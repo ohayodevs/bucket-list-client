@@ -1,0 +1,30 @@
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title" data-id={{todo.id}}>{{todo.name}}</h3>
+    </div>
+    <div class="panel-body">
+      <div>
+          Name: {{todo.name}}
+      </div>
+      <div>
+          Description: {{todo.description}}
+      </div>
+      <div>
+          Date: {{todo.date}}
+      </div>
+      <div>
+        {{#if todo.location}}
+          Location: {{todo.location}}
+        {{else}}
+          No location provided.
+        {{/if}}
+      </div>
+      <button class="todo-delete btn btn-danger entry-delete-button" class="entry-delete-button" data-id={{todo.id}}>
+        Delete
+      </button>
+      <button type="button" class="todo-update btn btn-info entry-update-button" data-id={{todo.id}}>
+      Update
+      </button>
+
+    </div>
+  </div>
