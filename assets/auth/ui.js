@@ -17,6 +17,8 @@ const signUpFailure = function () {
 
 const signInSuccess = function (data) {
   store.user = data.user
+  $('#first-page').addClass('hidden')
+  $('#second-page, .todo-header').removeClass('hidden')
 }
 
 const signInFailure = function () {
