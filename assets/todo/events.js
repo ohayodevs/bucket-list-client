@@ -37,7 +37,6 @@ let id
 const onShowUpdate = (event) => {
   event.preventDefault()
   id = $('.panel-title').attr('data-id')
-  console.log(id)
   $('#update-form-id').val(id)
   ui.onShowUpdateForm()
 }
@@ -45,7 +44,6 @@ const onShowUpdate = (event) => {
 const onUpdate = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('update is', data)
   api.update(data, id)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)

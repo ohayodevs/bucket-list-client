@@ -10,7 +10,6 @@ const signUpSuccess = function () {
 }
 
 const signUpFailure = function () {
-  console.log('failure message')
   $('#sign-up-feedback').removeClass('text-success')
   $('#sign-up-feedback').addClass('text-danger')
   $('#sign-up-feedback').append('Life is tough! Try again!')
@@ -34,17 +33,35 @@ const signInFailure = function () {
 const signOutSuccess = () => {
   $('#first-page').removeClass('hidden')
   $('#second-page, .todo-header').addClass('hidden')
+  $('#sign-in-feedback').text('')
   store.user = null
 }
 
 const signOutFailure = () => {
   console.error()
 }
+
+const changePasswordSuccess = function (data) {
+  $('#change-password-feedback').removeClass('text-danger')
+  $('#change-password-feedback').addClass('text-success')
+  $('#change-password-feedback').text('Updated successfully!')
+  $('form').trigger('reset')
+}
+
+const changePasswordFailure = () => {
+  $('#change-password-feedback').addClass('text-danger')
+  $('#change-password-feedback').removeClass('text-success')
+  $('#change-password-feedback').text('Try again!')
+  $('form').trigger('reset')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
