@@ -4,16 +4,26 @@ const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
 const store = require('../scripts/store')
-// const signInOut = require('./signinOut')
+const signInTemplate = require('../scripts/templates/sign-in.handlebars')
+const signUpTemplate = require('../scripts/templates/sign-up.handlebars')
 
 const showSignUp = function () {
-  $('#sign-up-form').toggle()
-  $('#sign-in-form').toggle()
+  $('#first-page-forms').html('')
+  const signUpHtml = signUpTemplate()
+  $('#first-page-forms').append(signUpHtml)
+  // $('#sign-up-form').show()
+  $('#sign-in-form').hide()
 }
 
 const showSignIn = function () {
-  $('#sign-up-form').toggle()
-  $('#sign-in-form').toggle()
+  $('#first-page-forms').html('')
+  showPageOne()
+  $('#sign-up-form').hide()
+}
+
+const showPageOne = function () {
+  const signInHtml = signInTemplate()
+  $('#first-page-forms').append(signInHtml)
 }
 
 const onSignUp = function (event) {
@@ -60,9 +70,10 @@ const onSignOut = function (event) {
 // }
 //
 const addHandlers = () => {
+  showPageOne()
+  $('#first-page-forms').on('click','#show-sign-up', showSignUp)
+  $('#first-page-forms').on('click','#show-sign-in', showSignIn)
   $('#sign-up-form').on('submit', onSignUp)
-  $('#change-sign-up').on('click', showSignUp)
-  $('#change-sign-in').on('click', showSignIn)
   $('#sign-in-form').on('submit', onSignIn)
   $('#change-password-form').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
