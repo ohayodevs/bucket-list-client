@@ -1,20 +1,22 @@
 <!-- create form -->
+<p class="lead">Add to Your Bucket-List</p>
 <form id="create-form">
   <div class="form-group">
-    <label for="create-todo">To-do Name</label>
-    <input type="text" class="form-control" name="todo[name]" id="create-item" placeholder="Name">
+    <input type="text" class="form-control" name="todo[name]" id="create-item" placeholder="What do you want to do?" required>
   </div>
   <div class="form-group">
-    <label for="create-description">Description</label>
-    <input type="text" class="form-control" name="todo[description]" id="create-description" placeholder="Description">
+    <input type="text" class="form-control" name="todo[description]" id="create-description" placeholder="Description" required>
   </div>
   <div class="form-group">
-    <label for="create-date">Date</label>
-    <input type="date" class="form-control" name="todo[date]" id="create-date" placeholder="Date">
+    <input type="date" class="form-control" name="todo[date]" id="create-date" placeholder="Date" required>
   </div>
   <div class="form-group">
-    <label for="create-location">Location</label>
-    <input type="text" class="form-control" name="todo[location]" id="create-location" placeholder="Location">
+    <input type="text" class="form-control" name="todo[location]" id="create-location" placeholder="Where do you want to do it?">
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <p id="create-form-feedback"></p>
+    </div>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>

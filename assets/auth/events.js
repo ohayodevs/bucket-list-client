@@ -27,11 +27,7 @@ const showPageOne = function () {
 
 const onSignUp = function (event) {
   event.preventDefault()
-
   const data = getFormFields(this)
-  // console.log(this)
-  // console.log(data)
-  // console.log('EVENTS')
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)

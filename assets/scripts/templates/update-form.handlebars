@@ -1,21 +1,23 @@
 <!-- update form -->
-<form id="update-form" class="hidden">
+<p class="lead">Update Your Bucket-List Entry</p>
+<form id="update-form">
   <div class="form-group">
-    <label for="update-todo">THIS IS UPDATE To-do Name</label>
-    <input type="text" class="form-control" name="todo[name]" id="update-item" placeholder="Name">
+    <input type="text" class="form-control" name="todo[name]" id="update-item" placeholder="What do you want to do?" required>
     <input type="hidden" name="todo[id]" id="update-form-id">
   </div>
   <div class="form-group">
-    <label for="update-description">Description</label>
-    <input type="text" class="form-control" name="todo[description]" id="update-description" placeholder="Description">
+    <input type="text" class="form-control" name="todo[description]" id="update-description" placeholder="Description" required>
   </div>
   <div class="form-group">
-    <label for="update-date">Date</label>
-    <input type="date" class="form-control" name="todo[date]" id="update-date" placeholder="Date">
+    <input type="date" class="form-control" name="todo[date]" id="update-date" placeholder="Date" required>
   </div>
   <div class="form-group">
-    <label for="update-location">Location</label>
-    <input type="text" class="form-control" name="todo[location]" id="update-location" placeholder="Location">
+    <input type="text" class="form-control" name="todo[location]" id="update-location" placeholder="Where do you want to do it?">
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <p id="update-form-feedback"></p>
+    </div>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
