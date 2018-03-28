@@ -33,22 +33,22 @@ const onShowOne = function (event) {
     .then(ui.onShowOneSuccess)
     .catch(ui.onShowOneFailure)
 }
+let id
+const onShowUpdate = (event) => {
+  event.preventDefault()
+  id = $('.panel-title').attr('data-id')
+  console.log(id)
+  $('#update-form-id').val(id)
+  ui.onShowUpdateForm()
+}
 
 const onUpdate = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('update form ', data)
-  api.update(data)
+  console.log('update is', data)
+  api.update(data, id)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)
-}
-
-const onShowUpdate = (event) => {
-  event.preventDefault()
-  const id = $('.panel-title').attr('data-id')
-  console.log(id)
-  $('#update-form-id').val(id)
-  ui.onShowUpdateForm()
 }
 
 const onClear = (event) => {

@@ -50,7 +50,7 @@ const onShowUpdateForm = () => {
   $('#todo-content').append(showUpdateHtml)
 }
 
-const onUpdateSuccess = function (data) {
+const onUpdateSuccess = function () {
   $('#create-form-feedback').removeClass('text-danger')
   $('#create-form-feedback').addClass('text-success')
   $('#create-form-feedback').append('Bucket-list udpated successfully!')
