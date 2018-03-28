@@ -11,7 +11,6 @@ const showSignUp = function () {
   $('#first-page-forms').html('')
   const signUpHtml = signUpTemplate()
   $('#first-page-forms').append(signUpHtml)
-  // $('#sign-up-form').show()
   $('#sign-in-form').hide()
 }
 
@@ -30,9 +29,9 @@ const onSignUp = function (event) {
   event.preventDefault()
 
   const data = getFormFields(this)
-  console.log(this)
-  console.log(data)
-  console.log('EVENTS')
+  // console.log(this)
+  // console.log(data)
+  // console.log('EVENTS')
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -73,8 +72,8 @@ const addHandlers = () => {
   showPageOne()
   $('#first-page-forms').on('click','#show-sign-up', showSignUp)
   $('#first-page-forms').on('click','#show-sign-in', showSignIn)
-  $('#sign-up-form').on('submit', onSignUp)
-  $('#sign-in-form').on('submit', onSignIn)
+  $('#first-page-forms').on('submit','#sign-up-form', onSignUp)
+  $('#first-page-forms').on('submit','#sign-in-form', onSignIn)
   $('#change-password-form').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
 }
