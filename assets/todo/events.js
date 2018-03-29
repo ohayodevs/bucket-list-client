@@ -61,9 +61,10 @@ const onDeleteTodo = (event) => {
   // grab the `data-id` attribute
   const id = event.target.dataset.id
   api.deleteTodo(id)
-    .then(onShowAll)
     .then(ui.onDeleteSuccess)
-    .catch(ui.failure)
+    .then($('#content').empty())
+    .then(onShowAll)
+    .catch(ui.onDeleteFailure)
 }
 
 const addHandlers = () => {

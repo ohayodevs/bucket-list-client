@@ -10,6 +10,7 @@ const showUpdateTemplate = require('../scripts/templates/update-form.handlebars'
 const onShowCreateForm = () => {
   const showCreateHtml = showCreateTemplate()
   $('#todo-content').empty()
+  $('#delete-feedback').text('')
   $('#todo-content').append(showCreateHtml)
 }
 
@@ -17,14 +18,16 @@ const onCreateSuccess = function (data) {
   store.data = data
   $('#create-form-feedback').removeClass('text-danger')
   $('#create-form-feedback').addClass('text-success')
-  $('#create-form-feedback').append('You\'re one step closer to making it happen!')
+  $('#create-form-feedback').text('You\'re one step closer to making it happen!')
   $('form').trigger('reset')
+  $('#content').empty() // keiko added
+  $('#show-all').prop('disabled', false) // keiko added
 }
 
 const onCreateFailure = function () {
   $('#create-form-feedback').addClass('text-danger')
   $('#create-form-feedback').removeClass('text-success')
-  $('#create-form-feedback').append('Womp! Try that again!')
+  $('#create-form-feedback').text('Womp! Try that again!')
   $('form').trigger('reset')
 }
 
@@ -37,6 +40,7 @@ const onShowAllSuccess = function (data) {
 const onShowOneSuccess = function (data) {
   const showTodoHtml = showTodoTemplate({ todo: data.todo })
   $('#todo-content').empty()
+  $('#delete-feedback').text('')
   $('#todo-content').append(showTodoHtml)
 }
 
@@ -64,8 +68,17 @@ const onUpdateFailure = function () {
 }
 
 const onDeleteSuccess = () => {
+  $('#delete-feedback').removeClass('text-danger')
+  $('#delete-feedback').addClass('text-success')
   $('#todo-content').empty()
   $('#delete-feedback').text('Deleted successfully!')
+}
+
+const onDeleteFailure = () => {
+  $('#delete-feedback').addClass('text-danger')
+  $('#delete-feedback').removeClass('text-success')
+  $('#todo-content').empty()
+  $('#delete-feedback').text('Delete was unsuccessful!')
 }
 
 module.exports = {
@@ -78,5 +91,6 @@ module.exports = {
   onUpdateSuccess,
   onUpdateFailure,
   onShowAllSuccess,
-  onDeleteSuccess
+  onDeleteSuccess,
+  onDeleteFailure
 }
