@@ -2,38 +2,42 @@
 
 const store = require('../scripts/store')
 
-const signUpSuccess = function () {
+const signUpSuccess = () => {
   $('#sign-up-feedback').removeClass('text-danger')
   $('#sign-up-feedback').addClass('text-success')
-  $('#sign-up-feedback').append('You have successfully sign up!')
+  $('#sign-up-feedback').text('You have successfully sign up!')
   $('form').trigger('reset')
 }
 
-const signUpFailure = function () {
+const signUpFailure = () => {
   $('#sign-up-feedback').removeClass('text-success')
   $('#sign-up-feedback').addClass('text-danger')
-  $('#sign-up-feedback').append('Life is tough! Try again!')
+  $('#sign-up-feedback').text('Life is tough! Try again!')
   $('form').trigger('reset')
 }
 
-const signInSuccess = function (data) {
+const signInSuccess = (data) => {
   store.user = data.user
   $('#first-page').addClass('hidden')
   $('#second-page, .todo-header').removeClass('hidden')
   $('form').trigger('reset')
 }
 
-const signInFailure = function () {
+const signInFailure = () => {
   $('#sign-in-feedback').removeClass('text-success')
   $('#sign-in-feedback').addClass('text-danger')
-  $('#sign-in-feedback').append('Life is tough! Try again!')
+  $('#sign-in-feedback').text('Life is tough! Try again!')
   $('form').trigger('reset')
 }
 
 const signOutSuccess = () => {
   $('#first-page').removeClass('hidden')
   $('#second-page, .todo-header').addClass('hidden')
+  $('#content').empty()
+  $('#todo-content').empty()
+  $('#delete-feedback').empty()
   $('#sign-in-feedback').text('')
+  $('#show-all').prop('disabled', false)
   store.user = null
 }
 
@@ -41,7 +45,7 @@ const signOutFailure = () => {
   console.error()
 }
 
-const changePasswordSuccess = function (data) {
+const changePasswordSuccess = (data) => {
   $('#change-password-feedback').removeClass('text-danger')
   $('#change-password-feedback').addClass('text-success')
   $('#change-password-feedback').text('Updated successfully!')
