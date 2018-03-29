@@ -16,10 +16,9 @@ const createTodo = function (data) {
   })
 }
 
-const update = function (data) {
-  console.log('in api data is', data)
+const update = function (data, id) {
   return $.ajax({
-    url: config.apiUrl + '/todos/' + data.todo.id,
+    url: config.apiUrl + '/todos/' + id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',

@@ -4,11 +4,30 @@ const store = require('../scripts/store')
 // const listEvents = require('./events')
 const showTodosTemplate = require('../scripts/templates/todos.handlebars')
 const showTodoTemplate = require('../scripts/templates/todo.handlebars')
+const showCreateTemplate = require('../scripts/templates/create-form.handlebars')
+const showUpdateTemplate = require('../scripts/templates/update-form.handlebars')
+
+const onShowCreateForm = () => {
+  const showCreateHtml = showCreateTemplate()
+  $('#todo-content').empty()
+  $('#delete-feedback').text('')
+  $('#todo-content').append(showCreateHtml)
+}
 
 const onCreateSuccess = function (data) {
   store.data = data
-  const showTodosHtml = showTodosTemplate({ todos: data.todos })
-  $('#content').append(showTodosHtml)
+  $('#create-form-feedback').removeClass('text-danger')
+  $('#create-form-feedback').addClass('text-success')
+  $('#create-form-feedback').text('You\'re one step closer to making it happen!')
+  $('form').trigger('reset')
+  $('#content').empty() // keiko added
+  $('#show-all').prop('disabled', false) // keiko added
+}
+
+const onCreateFailure = function () {
+  $('#create-form-feedback').addClass('text-danger')
+  $('#create-form-feedback').removeClass('text-success')
+  $('#create-form-feedback').text('Womp! Try that again!')
   $('form').trigger('reset')
 }
 
@@ -20,65 +39,58 @@ const onShowAllSuccess = function (data) {
 
 const onShowOneSuccess = function (data) {
   const showTodoHtml = showTodoTemplate({ todo: data.todo })
-  $('#content').append(showTodoHtml)
+  $('#todo-content').empty()
+  $('#delete-feedback').text('')
+  $('#todo-content').append(showTodoHtml)
 }
 
 const onShowOneFailure = function () {
   console.error()
 }
 
-// const getOne = (data) => {
-//   store.data = data
-//   // console.log(data)
-//   // console.log('this is data')
-//   // const showlistsHtml = showlistsTemplate({ lists: data.todos })
-//   // $('#content').append(showlistsHtml)
-//   // console.log(data.todo.id)
-//   $('.oneId').val(data.todo.id)
-//   $('.oneDate').val(data.todo.date)
-//   $('.oneItem').val(data.todo.item_name)
-//   $('.oneCategory').val(data.todo.category)
-//   $('#messageTwo').dequeue()
-// }
-//
-const onUpdateSuccess = function (data) {
-  $('form').trigger('reset')
+const onShowUpdateForm = () => {
+  const showUpdateHtml = showUpdateTemplate()
+  $('#todo-content').empty()
+  $('#todo-content').append(showUpdateHtml)
+}
+
+const onUpdateSuccess = function () {
+  $('#create-form-feedback').removeClass('text-danger')
+  $('#create-form-feedback').addClass('text-success')
+  $('#create-form-feedback').append('Bucket-list udpated successfully!')
 }
 
 const onUpdateFailure = function () {
-  console.error()
+  $('#create-form-feedback').addClass('text-danger')
+  $('#create-form-feedback').removeClass('text-success')
+  $('#create-form-feedback').append('Udpate was unsuccessful! Try again!')
+  // $('form').trigger('reset')
 }
-//
-// const onUpdateFailure = function () {
-//   // store.data = data
-//   // const showlistsHtml = showlistsTemplate({ lists: data.todos })
-//   $('input').val('')
-//   // $('#content').append(showlistsHtml)
-//   $('#updatemyModal').modal('hide')
-//   $('#failureModal').modal('show')
-//   $('#messageTwo').dequeue()
-//   // $('#your-modal-id').modal('hide')
-//   // $('body').removeClass('modal-open')
-//   // $('.modal-backdrop').remove()
-// }
-//
 
-//
-// const removeList = (data) => {
-//   store.data = data
-//   const showlistsHtml = showlistsTemplate({ lists: data.todos })
-//   $('#content').append(showlistsHtml)
-//   // console.log(data.todos)
-//   // $('input').val('')
-//   $('#deletemyModal').modal('show')
-//   $('#messageTwo').dequeue()
-// }
+const onDeleteSuccess = () => {
+  $('#delete-feedback').removeClass('text-danger')
+  $('#delete-feedback').addClass('text-success')
+  $('#todo-content').empty()
+  $('#delete-feedback').text('Deleted successfully!')
+}
+
+const onDeleteFailure = () => {
+  $('#delete-feedback').addClass('text-danger')
+  $('#delete-feedback').removeClass('text-success')
+  $('#todo-content').empty()
+  $('#delete-feedback').text('Delete was unsuccessful!')
+}
 
 module.exports = {
+  onShowCreateForm,
   onCreateSuccess,
+  onCreateFailure,
   onShowOneSuccess,
   onShowOneFailure,
+  onShowUpdateForm,
   onUpdateSuccess,
   onUpdateFailure,
-  onShowAllSuccess
+  onShowAllSuccess,
+  onDeleteSuccess,
+  onDeleteFailure
 }
