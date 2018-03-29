@@ -16,6 +16,7 @@ const onCreateTodo = function (event) {
   store.data = data
   api.createTodo(data)
     .then(ui.onCreateSuccess)
+    .then(onShowAll)
     .catch(ui.onCreateFailure)
 }
 
@@ -46,6 +47,7 @@ const onUpdate = (event) => {
   const data = getFormFields(event.target)
   api.update(data, id)
     .then(ui.onUpdateSuccess)
+    .then(onShowAll)
     .catch(ui.onUpdateFailure)
 }
 
@@ -53,12 +55,12 @@ const onClear = (event) => {
   event.preventDefault()
   $('#show-all').prop('disabled', false)
   $('#content').empty()
+  $('#delete-feedback').text('')
   $('#todo-content').empty()
 }
 
 const onDeleteTodo = (event) => {
   event.preventDefault()
-  // grab the `data-id` attribute
   const id = event.target.dataset.id
   api.deleteTodo(id)
     .then(ui.onDeleteSuccess)
