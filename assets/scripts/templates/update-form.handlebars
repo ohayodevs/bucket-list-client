@@ -1,0 +1,24 @@
+<!-- update form -->
+<p class="lead">Update Your Bucket-List Entry</p>
+<form id="update-form">
+  <div class="form-group">
+    <input type="text" class="form-control" name="todo[name]" id="update-item" placeholder="What do you want to do?" required>
+    <input type="hidden" name="todo[id]" id="update-form-id">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="todo[description]" id="update-description" placeholder="Description" required>
+  </div>
+  <div class="form-group">
+    <input type="date" class="form-control" name="todo[date]" id="update-date" placeholder="Date" required>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="todo[location]" id="update-location" placeholder="Where do you want to do it?">
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <p id="update-form-feedback"></p>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<!-- end update form -->
