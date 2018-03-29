@@ -1,5 +1,7 @@
 ## Bucketli.st
 
+With Ohayo Bucket List, a user can create and track their life goals in an easy-to-use way.
+
 ### ERD
 
 [ERD](https://i.imgur.com/20nhnoH.jpg)
@@ -34,9 +36,16 @@
 - Git
 - Github Pages
 
-### Unsolved Issues for Future Iterations
+### Planning Process & Problem-solving Strategy
+- As an odd numbered team, we had to work together on all features at together.
+- We broke down each problem to smaller issues and tackled them piece by piece.
 
+### Unsolved Issues for Future Iterations
+- Add photos
+- Connect to third party APIs (e.g. Facebook, Google Maps)
+- Allow a user to mark that they completed a goal and list completed goals
 
 ## Links
+- Bucketli.st Deployed Client: https://ohayodevs.github.io/bucket-list-client/
 - Bucketli.st API repository: https://github.com/ohayodevs/bucket-list
 - Bucketli.st API on Heroku: https://ohayo-bucketlist.herokuapp.com/

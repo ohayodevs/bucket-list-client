@@ -20,8 +20,8 @@ const onCreateSuccess = function (data) {
   $('#create-form-feedback').addClass('text-success')
   $('#create-form-feedback').text('You\'re one step closer to making it happen!')
   $('form').trigger('reset')
-  $('#content').empty() // keiko added
-  $('#show-all').prop('disabled', false) // keiko added
+  $('#content').empty()
+  $('#show-all').prop('disabled', false)
 }
 
 const onCreateFailure = function () {
@@ -33,8 +33,14 @@ const onCreateFailure = function () {
 
 const onShowAllSuccess = function (data) {
   store.data = data
-  const showTodosHtml = showTodosTemplate({ todos: data.todos })
-  $('#content').append(showTodosHtml)
+  if (data.todos.length === 0) {
+    $('#content').removeClass('text-danger')
+    $('#content').addClass('text-success')
+    $('#content').text('Add to your Bucket List!')
+  } else {
+    const showTodosHtml = showTodosTemplate({ todos: data.todos })
+    $('#content').append(showTodosHtml)
+  }
 }
 
 const onShowOneSuccess = function (data) {
@@ -55,16 +61,19 @@ const onShowUpdateForm = () => {
 }
 
 const onUpdateSuccess = function () {
-  $('#create-form-feedback').removeClass('text-danger')
-  $('#create-form-feedback').addClass('text-success')
-  $('#create-form-feedback').append('Bucket-list udpated successfully!')
+  $('#update-form-feedback').removeClass('text-danger')
+  $('#update-form-feedback').addClass('text-success')
+  $('#update-form-feedback').text('Bucket list udpated successfully!')
+  $('form').trigger('reset')
+  $('#content').empty()
+  $('#show-all').prop('disabled', false)
 }
 
 const onUpdateFailure = function () {
-  $('#create-form-feedback').addClass('text-danger')
-  $('#create-form-feedback').removeClass('text-success')
-  $('#create-form-feedback').append('Udpate was unsuccessful! Try again!')
-  // $('form').trigger('reset')
+  $('#update-form-feedback').addClass('text-danger')
+  $('#update-form-feedback').removeClass('text-success')
+  $('#update-form-feedback').text('Udpate was unsuccessful! Try again!')
+  $('form').trigger('reset')
 }
 
 const onDeleteSuccess = () => {
