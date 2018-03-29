@@ -20,8 +20,8 @@ const onCreateSuccess = function (data) {
   $('#create-form-feedback').addClass('text-success')
   $('#create-form-feedback').text('You\'re one step closer to making it happen!')
   $('form').trigger('reset')
-  $('#content').empty() // keiko added
-  $('#show-all').prop('disabled', false) // keiko added
+  $('#content').empty()
+  $('#show-all').prop('disabled', false)
 }
 
 const onCreateFailure = function () {

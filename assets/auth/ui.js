@@ -33,7 +33,11 @@ const signInFailure = () => {
 const signOutSuccess = () => {
   $('#first-page').removeClass('hidden')
   $('#second-page, .todo-header').addClass('hidden')
+  $('#content').empty()
+  $('#todo-content').empty()
+  $('#delete-feedback').empty()
   $('#sign-in-feedback').text('')
+  $('#show-all').prop('disabled', false)
   store.user = null
 }
 
