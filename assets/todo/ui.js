@@ -9,6 +9,7 @@ const showUpdateTemplate = require('../scripts/templates/update-form.handlebars'
 
 const onShowCreateForm = () => {
   const showCreateHtml = showCreateTemplate()
+  $('#clear-button').removeClass('hidden')
   $('#todo-content').empty()
   $('#delete-feedback').text('')
   $('#todo-content').append(showCreateHtml)
@@ -33,14 +34,16 @@ const onCreateFailure = function () {
 
 const onShowAllSuccess = function (data) {
   store.data = data
-  if (data.todos.length === 0) {
-    $('#content').removeClass('text-danger')
-    $('#content').addClass('text-success')
-    $('#content').text('Add to your Bucket List!')
-  } else {
-    const showTodosHtml = showTodosTemplate({ todos: data.todos })
-    $('#content').append(showTodosHtml)
-  }
+  $('#clear-button').removeClass('hidden')
+  const showTodosHtml = showTodosTemplate({ todos: data.todos })
+  $('#content').append(showTodosHtml)
+  $('#content').text('Add to your Bucket List!')
+}
+
+const onShowAllFailure = function () {
+  $('#content').removeClass('text-success')
+  $('#content').addClass('text-danger')
+  $('#content').text('Add to your Bucket List!')
 }
 
 const onShowOneSuccess = function (data) {
@@ -51,7 +54,9 @@ const onShowOneSuccess = function (data) {
 }
 
 const onShowOneFailure = function () {
-  console.error()
+  $('#content').removeClass('text-success')
+  $('#content').addClass('text-danger')
+  $('#content').text('Please try again!')
 }
 
 const onShowUpdateForm = () => {
@@ -94,12 +99,13 @@ module.exports = {
   onShowCreateForm,
   onCreateSuccess,
   onCreateFailure,
+  onShowAllSuccess,
+  onShowAllFailure,
   onShowOneSuccess,
   onShowOneFailure,
   onShowUpdateForm,
   onUpdateSuccess,
   onUpdateFailure,
-  onShowAllSuccess,
   onDeleteSuccess,
   onDeleteFailure
 }

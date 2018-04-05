@@ -57,6 +57,7 @@ const onClear = (event) => {
   $('#content').empty()
   $('#delete-feedback').text('')
   $('#todo-content').empty()
+  $('#clear-button').addClass('hidden')
 }
 
 const onDeleteTodo = (event) => {
