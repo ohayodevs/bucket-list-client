@@ -26,7 +26,7 @@ const signInSuccess = (data) => {
 const signInFailure = () => {
   $('#sign-in-feedback').removeClass('text-success')
   $('#sign-in-feedback').addClass('text-danger')
-  $('#sign-in-feedback').text('Life is tough! Try again!')
+  $('#sign-in-feedback').text('Did you sign up yet?!')
   $('form').trigger('reset')
 }
 

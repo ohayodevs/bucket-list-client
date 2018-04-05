@@ -35,9 +35,14 @@ const onCreateFailure = function () {
 const onShowAllSuccess = function (data) {
   store.data = data
   $('#clear-button').removeClass('hidden')
-  const showTodosHtml = showTodosTemplate({ todos: data.todos })
-  $('#content').append(showTodosHtml)
-  $('#content').text('Add to your Bucket List!')
+  if (data.todos.length === 0) {
+    $('#content').removeClass('text-success')
+    $('#content').addClass('text-danger')
+    $('#content').text('Add to your Bucket List!')
+  } else {
+    const showTodosHtml = showTodosTemplate({ todos: data.todos })
+    $('#content').append(showTodosHtml)
+  }
 }
 
 const onShowAllFailure = function () {
