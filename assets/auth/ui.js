@@ -18,7 +18,7 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   store.user = data.user
-  $('#first-page').addClass('hidden')
+  $('#first-page, #clear-button').addClass('hidden')
   $('#second-page, .todo-header').removeClass('hidden')
   $('form').trigger('reset')
 }
@@ -26,12 +26,12 @@ const signInSuccess = (data) => {
 const signInFailure = () => {
   $('#sign-in-feedback').removeClass('text-success')
   $('#sign-in-feedback').addClass('text-danger')
-  $('#sign-in-feedback').text('Life is tough! Try again!')
+  $('#sign-in-feedback').text('Did you sign up yet?!')
   $('form').trigger('reset')
 }
 
 const signOutSuccess = () => {
-  $('#first-page').removeClass('hidden')
+  $('#first-page, #clear-button').removeClass('hidden')
   $('#second-page, .todo-header').addClass('hidden')
   $('#content').empty()
   $('#todo-content').empty()
