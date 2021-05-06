@@ -34,7 +34,7 @@
     "grunt-sass-lint": "^0.2.4",
     "grunt-shell": "^2.1.0",
     "grunt-webpack": "^3.0.2",
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.7.7",
     "handlebars-loader": "^1.6.0",
     "html-loader": "^0.5.5",
     "load-grunt-config": "^0.19.2",
